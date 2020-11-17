@@ -1,0 +1,181 @@
+<div class="nav-wrap">
+  <p
+    *ngFor="let item of selectionList; let i = index"
+    [ngClass]="{ 'addColor': i === selectionIndex , clickFont: i === selectionIndex}"
+    [ngStyle]="{'min-width': item.width}"
+    (click)="chooseData(item.type, i)">
+    {{ selectInfoArr[i] ? (selectInfoArr[i].name === '全部' ||  !selectInfoArr[i].name? item.name : selectInfoArr[i].name) : item.name }}
+    <!-- <ion-icon *ngIf="i === selectionIndex" name="chevron-up-outline"></ion-icon> -->
+    <img *ngIf="i === selectionIndex" src="assets/img/cd.png" width="6px">
+    <img *ngIf="i !== selectionIndex" src="assets/img/cd-close.png" width="6px">
+    <!-- <ion-icon *ngIf="i !== selectionIndex" name="chevron-down-outline"></ion-icon> -->
+  </p>
+</div>
+<div class="wrap" *ngIf="selectionType !== ''">
+  <!-- 数据下拉框 -->
+  <div class="tab1" *ngIf="selectionType === '1'">
+    <ion-list>
+      <ion-radio-group>
+        <ion-item
+          *ngFor="let item of selectionList[selectionIndex].dropDownContentList;let i = index"
+          [lines]="selectionList[selectionIndex].dropDownContentList.length === i + 1 ? 'none' : 'full'"
+          (click)="ionChangeArea(item, selectionIndex)">
+          <ion-label text-wrap [ngClass]="{ addColor: selectInfoArr[selectionIndex] ? selectInfoArr[selectionIndex].name === item.name  : false }">{{ item.name }}</ion-label>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+  <!-- 时间下拉框 -->
+  <div class="tab2" *ngIf="selectionType === '0'">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label>
+          <ion-row>
+            <ion-col size="5">
+              <div class="time-sign">开始时间</div>
+              <div class="time-value">
+                <ion-datetime
+                  *ngIf="selectionList[selectionIndex].accuracy === 'day'"
+                  placeholder="请选择"
+                  cancelText="取消"
+                  [(ngModel)]="startTime"
+                  doneText="确定"
+                  displayFormat="YYYY-MM-DD"
+                  pickerFormat="YYYY MM DD"
+                  (ionChange)="datetimechange('startTime')"
+                >
+                </ion-datetime>
+                <ion-datetime
+                  *ngIf="selectionList[selectionIndex].accuracy === 'second'"
+                  placeholder="请选择"
+                  cancelText="取消"
+                  [(ngModel)]="startTime"
+                  doneText="确定"
+                  displayFormat="YYYY-MM-DD HH:mm:ss"
+                  pickerFormat="YYYY MM DD HH MM SS"
+                  (ionChange)="datetimechange('startTime')"
+                >
+                </ion-datetime>
+              </div>
+            </ion-col>
+            <ion-col size="2">
+              至
+            </ion-col>
+            <ion-col size="5">
+              <div class="time-sign">结束时间</div>
+              <div class="time-value">
+                <ion-datetime
+                  *ngIf="selectionList[selectionIndex].accuracy === 'day'"
+                  placeholder="请选择"
+                  cancelText="取消"
+                  [(ngModel)]="endTime"
+                  doneText="确定"
+                  displayFormat="YYYY-MM-DD"
+                  pickerFormat="YYYY MM DD"
+                  (ionChange)="datetimechange('endTime')"
+                >
+                </ion-datetime>
+                <ion-datetime
+                  *ngIf="selectionList[selectionIndex].accuracy === 'second'"
+                  placeholder="请选择"
+                  cancelText="取消"
+                  [(ngModel)]="endTime"
+                  doneText="确定"
+                  displayFormat="YYYY-MM-DD HH:mm:ss"
+                  pickerFormat="YYYY MM DD HH MM SS"
+                  (ionChange)="datetimechange('endTime')"
+                >
+                </ion-datetime>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-label>
+      </ion-item>
+      <!-- 按钮 -->
+      <div class="event">
+        <ion-button color="secondary" (click)="clearTime()">重置</ion-button>
+        <ion-button color="primary" (click)="confirmTime()">确定</ion-button>
+      </div>
+    </ion-list>
+  </div>
+  <!-- 区域多级联动 -->
+  <div class="tab3" *ngIf="selectionType === '2'">
+    <div class="region-content">
+     
+      <div class="selected-region-title">
+        <span [ngClass]="{'bottom-border': currentIndex === 1}"
+          (click)="clickProvince()">{{currentProvince.text === '' ? '请选择' : currentProvince.text}}</span>
+        <span *ngIf="currentIndex > 1" [ngClass]="{'bottom-border': currentIndex === 2}"
+          (click)="clickCity()">{{currentCity.text === '' ? '请选择' : currentCity.text}}</span>
+        <span *ngIf="currentIndex > 2" [ngClass]="{'bottom-border': currentIndex === 3}"
+          (click)="clickCountry()">{{currentCountry.text === '' ? '请选择' : currentCountry.text}}</span>
+      </div>
+
+      <ion-list style="height: calc(100% - 200px);">
+        <ion-radio-group *ngIf="currentIndex === 1" [value] = "currentProvince.value">
+          <ion-item *ngFor="let item of selectionList[selectionIndex].dropDownContentList" (click)="selectProvince(item)">
+            <ion-label style="color: #333;">{{item.text}}</ion-label>
+            <ion-radio slot="end" mode="ios" [value]="item.value"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <ion-radio-group *ngIf="currentIndex === 2" [value] = "currentCity.value">
+          <ion-item *ngFor="let item of cityArr" (click)="selectCity(item)">
+            <ion-label style="color: #333;">{{item.text}}</ion-label>
+            <ion-radio slot="end" mode="ios" [value]="item.value"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <ion-radio-group *ngIf="currentIndex === 3" [value] = "currentCountry.value">
+          <ion-item *ngFor="let item of countryArr" (click)="selectCountry(item)">
+            <ion-label style="color: #333;">{{item.text}}</ion-label>
+            <ion-radio slot="end" mode="ios" [value]="item.value"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+
+      <ion-grid class="title">
+        <ion-row>
+          <ion-col size='6' class="text-left" (click)="closeComponent()">
+            取消
+          </ion-col>
+          <!-- <ion-col class="text-center">
+            请选择
+          </ion-col> -->
+          <ion-col class="text-right" size='6' (click)="selectRegionOk()">
+            确定
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+<!-- 数据多选下拉菜单 -->
+  <div class="tab4" *ngIf="selectionType === '3'">
+    <ion-list>
+        <ion-item
+          *ngFor="let item of selectionList[selectionIndex].dropDownContentList;let i = index"
+          [lines]="selectionList[selectionIndex].dropDownContentList.length === i + 1 ? 'none' : ''"
+          [ngClass]="{'clickFont': item.isClick}"
+          (click)="seletMulti(i, selectionIndex)">
+          <ion-label text-wrap [ngClass]="{ addColor: selectInfoArr[selectionIndex] ? selectInfoArr[selectionIndex].name === item.name  : false }">{{ item.name }}</ion-label>
+          <ion-avatar slot="end">
+            <!-- <img src="assets/img/selected.png"> -->
+            <ion-icon name="checkmark-outline" color="primary" *ngIf="item.isClick"></ion-icon>
+          </ion-avatar>
+        </ion-item>
+    </ion-list>
+    <ion-grid class="title">
+      <ion-row>
+        <ion-col size='6' class="text-left" (click)="clearMulti(selectionIndex)">
+          重置
+        </ion-col>
+        <!-- <ion-col class="text-center">
+          请选择
+        </ion-col> -->
+        <ion-col class="text-right" size='6' (click)="selectMulti(selectionIndex)">
+          确定
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+
+</div>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>迁移途径信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>土壤途径</span>
+  </div>
+  <app-base-info  [keyList]="soilList" [contentInfo]="routeInfoData" isLine="false"></app-base-info>
+  <div class="list-line">
+  </div>
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>包气带土层性质</span>
+  </div>
+  <app-base-info  [tableList]="gasList" [tableData]="gasData" isLine="true" isTable="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>地下水途径</span>
+  </div>
+  <app-base-info  [keyList]="waterList" [contentInfo]="routeInfoData" isLine="true" ></app-base-info>
+</ion-content>

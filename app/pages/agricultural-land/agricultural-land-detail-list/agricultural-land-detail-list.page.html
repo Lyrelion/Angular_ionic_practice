@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{page.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<app-ths-list-details
+  [topInfo]="topInfo"
+  (itemClick)="itemClick($event)"
+>
+</app-ths-list-details>
+<app-base-info [keyList]="landUserList" [contentInfo]="pageData" isLine="true" isBottomLine="true"></app-base-info>
+</ion-content>

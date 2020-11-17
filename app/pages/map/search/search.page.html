@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar 
+      placeholder="请输入点位名称" 
+      inputmode="decimal" 
+      type="decimal" 
+      [debounce]="250" 
+      showCancelButton="always"
+      cancelButtonText="取消"
+      (ionCancel)="searchCancel()"
+      [(ngModel)]="pages.keyword"
+      (ionChange)="search()"
+      mode="ios"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 下拉刷新 -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="下拉刷新页面"
+      refreshingSpinner="circles"
+      refreshingText="加载中...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list *ngIf="!pages.isSearch && pages.location.length !== 0">
+    <ion-list-header>
+      <ion-label>搜索历史</ion-label>
+    </ion-list-header>
+    <ion-item 
+      *ngFor="let item of pages.location, let i = index" 
+      [lines]=" i === pages.location.length-1?'none': 'full'"
+      button
+      >
+      <img src="assets/img/mapsearch-location-icon.png" height="16px">
+      <ion-label>
+        <h3>{{item.NAME}}</h3>
+        <p>{{item.ADDRESS}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="pages.isSearch">
+    <ion-item 
+      *ngFor="let item of pages.keywordSearch, let i = index" 
+      [lines]=" i === pages.keywordSearch.length-1?'none': 'full'"
+      (click)="toDetails(item)"
+      button
+      >
+      <img src="assets/img/mapsearch-location-icon.png" height="16px">
+      <ion-label>
+        <h3>{{item.NAME}}</h3>
+        <p>{{item.ADDRESS}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- 上拉加载 -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载更多...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

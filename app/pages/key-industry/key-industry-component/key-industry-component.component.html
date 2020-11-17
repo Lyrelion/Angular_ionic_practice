@@ -1,0 +1,23 @@
+  <!-- 下拉刷新 -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="下拉刷新页面"
+      refreshingSpinner="circles"
+      refreshingText="加载中...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <app-ths-list 
+    [pageInfo]="page.listInfo" 
+    [listCode]="page.listInfoCode"
+    (getCollect)="getCollect($event)"
+    (getNavigation)="getNavigation($event)"
+    (getItemClick)="getItemClick($event)"
+    ></app-ths-list>
+    <!-- 上拉加载 -->
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载更多...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>

@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>概况</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- 下拉刷新 -->
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="下拉刷新页面"
+        refreshingSpinner="circles"
+        refreshingText="加载中...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <h2 class="title">监测数据</h2>
+    <ion-card>
+      <ion-card-header>
+        <ion-img src="assets/img/title-icon.png"></ion-img>
+        <ion-card-title>土壤</ion-card-title>
+        <ion-label class="time">2020-01-01至2020-09-21</ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="content">
+          <ion-label>江西省土壤环境监测点位</ion-label>
+          <ion-label class="num"><ion-text>0</ion-text>个</ion-label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-img src="assets/img/title-icon.png"></ion-img>
+        <ion-card-title>地下水</ion-card-title>
+        <ion-label class="time">2020-01-01至2020-09-21</ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="content">
+          <ion-label>江西省地下水环境监测点位</ion-label>
+          <ion-label class="num"><ion-text>10</ion-text>个</ion-label>
+        </div>
+        <ths-list-pie-chart
+        [data]="dataList3"
+        [colorList]="colorList"
+        [outer]="false"
+        [inner]="false"
+        [title]="'水质占比'"
+        labelShow="origin"
+        unit="个">
+      </ths-list-pie-chart>
+      </ion-card-content>
+    </ion-card>
+    <h2 class="title">重点行业企业</h2>
+    <ion-card>
+      <ion-card-header>
+        <ion-img src="assets/img/title-icon.png"></ion-img>
+        <ion-card-title>土壤</ion-card-title>
+        <ion-label class="time">截至2020年</ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="content">
+          <ion-label>江西省土壤环境重点监管单位共计</ion-label>
+          <ion-label class="num"><ion-text>312</ion-text>家</ion-label>
+        </div>
+        <ths-list-pie-chart
+        [data]="dataList3"
+        [colorList]="soilColorList"
+        [outer]="false"
+        [inner]="false"
+        [title]="'行业占比'"
+        labelShow="origin"
+        unit="个">
+      </ths-list-pie-chart>
+      </ion-card-content>
+    </ion-card>
+    <h2 class="title">建设用地</h2>
+    <ion-card>
+      <ion-card-header>
+        <ion-img src="assets/img/title-icon.png"></ion-img>
+        <ion-card-title>污染地块</ion-card-title>
+        <ion-label class="time">截至2020年</ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="pollu-land content">
+          <div class="land-item">
+            <ion-label class="item-num">2</ion-label>
+            <ion-label class="item-name">疑似污染地块</ion-label>
+          </div>
+          <div class="land-item">
+            <ion-label class="item-num">0</ion-label>
+            <ion-label class="item-name">非疑似污染地块</ion-label>
+          </div>
+          <div class="land-item">
+            <ion-label class="item-num">2</ion-label>
+            <ion-label class="item-name">污染地块</ion-label>
+          </div>
+        </div>
+        <ths-list-pie-chart
+        [data]="dataList3"
+        [colorList]="landColorList"
+        [outer]="false"
+        [inner]="false"
+        [title]="'阶段占比'"
+        labelShow="origin"
+        unit="个">
+      </ths-list-pie-chart>
+      </ion-card-content>
+    </ion-card>
+    <h2 class="title">农村环境治理项目</h2>
+    <ion-card>
+      <ion-card-content>
+        <div class="content">
+          <ion-label>农村环境治理项目</ion-label>
+          <ion-label class="num"><ion-text>1527</ion-text>个</ion-label>
+        </div>
+        <ths-list-pie-chart
+        [data]="dataList3"
+        [colorList]="environColorList"
+        [outer]="false"
+        [inner]="false"
+        [title]="'项目占比'"
+        labelShow="origin"
+        unit="个">
+      </ths-list-pie-chart>
+      </ion-card-content>
+    </ion-card>
+    <h2 class="title">农用地</h2>
+    <ion-card>
+      <ion-card-content>
+        <div class="content">
+          <ion-label>农村环境治理项目</ion-label>
+          <ion-label><ion-text>1527</ion-text>个</ion-label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

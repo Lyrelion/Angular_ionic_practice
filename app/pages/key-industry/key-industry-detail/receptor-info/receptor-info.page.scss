@@ -1,0 +1,12 @@
+.title {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    span {
+        font-weight: 800;
+        font-size: 14px;
+    }
+    img {
+        margin-right: 10px;
+    }
+}

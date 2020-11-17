@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>风险筛查纠偏信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 地下水监测数据 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>地下水监测数据</span>
+  </div>
+  <app-base-info [keyList]="distributionList" [contentInfo]="distributionData" isLine="true" isBottomLine="true"></app-base-info>
+</ion-content>

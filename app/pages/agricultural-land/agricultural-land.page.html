@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>农用地</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  color="primary" class="map" (click)="toMap()">
+        <img src="../assets/img/map.png" width="16px">
+        地图
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+    <!-- tab切换 -->
+    <ion-grid class="tab-switch">
+      <ion-row>
+        <ion-col *ngFor="let item of titleArr;let i=index" (click)="changeTitle(item.code, i)">
+          <span [ngClass]="{'active-word': titleChecked === item.code}">{{item.name}}</span>
+          <div [ngClass]="{'active': titleChecked === item.code}"></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- 搜索框 -->
+    <ion-searchbar 
+        [ngClass]="{'elemnt-none': showContent === 'total'? false: true}"
+        placeholder="查找" 
+        inputmode="decimal" 
+        type="decimal" 
+        [debounce]="250" 
+        showCancelButton="always"
+        cancelButtonText="取消"
+        (ionCancel)="searchCancel()"
+        [(ngModel)]="keywords"
+        (ionChange)="search()"
+        mode="ios"
+      ></ion-searchbar>
+    <!-- 下拉选择框 -->
+    <app-drop-dwon-selection [selectionList]="selectionList" (eventOne)="ionChangeArea($event)"
+        [ngClass]="{'elemnt-none': showContent === 'total'? false: true}"></app-drop-dwon-selection>
+</ion-header>
+
+<ion-content>
+  <app-agricultural-land-component [param] = "param"></app-agricultural-land-component>
+</ion-content>

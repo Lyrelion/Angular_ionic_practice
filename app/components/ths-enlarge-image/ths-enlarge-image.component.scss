@@ -1,0 +1,92 @@
+ion-slides {
+    height: 100%;
+    width: 100%;
+    background: #000;
+    --bullet-background-active: #fff;
+
+    ion-slide {
+        position: relative;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        .img-title {
+            position: absolute;
+            margin: 0 auto;
+            top: 8px;
+            z-index: 999;
+            font-size: 16px;
+            font-weight: bold;
+            color: #999;
+        }
+        .img-note{
+            position: absolute;
+            margin: 0 auto;
+            bottom: 40px;
+            z-index: 999;
+        }
+        img {
+            border-radius: 3px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #fff;
+        }
+        video{
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+    }
+}
+
+.close-imgs {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 999;
+    font-size: 22px;
+    color: #fff;
+}
+
+//全屏按钮
+video::-webkit-media-controls-fullscreen-button {
+    display: none;
+}
+//播放按钮
+video::-webkit-media-controls-play-button {
+
+}
+//进度条
+video::-webkit-media-controls-timeline {
+    // display: none;
+}
+//观看的当前时间
+video::-webkit-media-controls-current-time-display{
+    // display: none;            
+}
+//剩余时间
+video::-webkit-media-controls-time-remaining-display {
+    // display: none;            
+}
+//音量按钮
+video::-webkit-media-controls-mute-button {
+    // display: none;            
+}
+video::-webkit-media-controls-toggle-closed-captions-button {
+    // display: none;            
+}
+//音量的控制条
+video::-webkit-media-controls-volume-slider {
+    // display: none;            
+}
+//所有控件
+video::-webkit-media-controls-enclosure{ 
+    margin-bottom: 60px; // 调整距离底部的距离
+}
+// 控件面板
+video::-webkit-media-controls-panel{ 
+    background: transparent;
+}
+

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>采样信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!-- 采样阶段退样信息查询 -->
+ <div class="title">
+  <img src="assets/img/xq-title.png" width="3px">
+   <span>采样阶段退样信息查询</span>
+</div>
+<app-base-info [keyList]="refuseList" [contentInfo]="refuseData" isLine="true"></app-base-info>
+<div class="list-line">
+</div>
+<!-- 采样阶段资料审核进度查询 -->
+<div class="title">
+  <img src="assets/img/xq-title.png" width="3px">
+   <span>采样阶段资料审核进度查询</span>
+</div>
+<app-base-info [keyList]="progressList" [contentInfo]="processData" isLine="true"></app-base-info>
+<div class="list-line">
+</div>
+<!-- 采样阶段现场检查进度查询 -->
+<div class="title">
+  <img src="assets/img/xq-title.png" width="3px">
+   <span>采样阶段现场检查进度查询</span>
+</div>
+<app-base-info [keyList]="inspectList" [contentInfo]="insoectData" isLine="true" isBottomLine="true"></app-base-info>
+</ion-content>

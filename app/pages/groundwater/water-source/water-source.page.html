@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>莲场水厂(西总干渠)水源地</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 监督管理 -->
+  <ion-item 
+    lines="full"
+    detail="true"
+    (click)="goSuperList()">
+    <ion-avatar slot="start" class="list-icon">
+      <img src="assets/img/list-jdgl.png">
+    </ion-avatar>
+    <ion-label>监督管理</ion-label>
+  </ion-item>
+  <!-- 分隔线 -->
+  <div class="list-line">
+  </div>
+  <!-- 水源信息 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>水源信息</span>
+  </div>
+  <app-base-info [keyList]="landUserList" [contentInfo]="pageData"></app-base-info>
+  <!-- 监测井信息 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>监测井信息</span>
+  </div>
+  <app-base-info [keyList]="monitorInfoName" [contentInfo]="pageDataMon"></app-base-info>
+</ion-content>

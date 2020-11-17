@@ -1,0 +1,119 @@
+.list-line {
+    height: 8px;
+    width: 100%;
+    background-color: #F5F5F5;
+ }
+ ion-item {
+     font-size: 14px;
+     --inner-padding-end: 20px;
+     --border-color: #EEEEEE;
+     ion-label {
+         margin: 20px 0;
+     }
+ }
+ .key {
+     text-align: left;
+ }
+ .value {
+     text-align: right;
+ }
+ ion-toggle {
+    height: 30px;
+    // --border-radius: 10px;
+    // width: 50px;
+ }
+ .time {
+     width: 200px;
+     min-width: 200px;
+     max-width: 250px;
+ }
+ // 页面底部按钮
+.event {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #eee;
+    ion-button {
+      width: 50%;
+      font-size: 16px;
+      --border-radius: 0;
+      margin: 0;
+    }
+  }
+  .img-show{
+    ion-row {
+        margin-bottom: 10px;
+        width: 100%;
+    
+        // 图片展示部分
+        ion-col {
+          position: relative;
+          height: 80px;
+          margin-top: 5px;
+          text-align: center;
+    
+          img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 80px;
+            // border: 1px solid #DDDDDD;
+            margin: 0 auto;
+          }
+    
+          // 百分比
+          .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70px;
+            height: 80px;
+            line-height: 80px;
+            color: #fff;
+            font-size: 10px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.5);
+          }
+    
+          // 遮罩
+          .isMark {
+            background: rgba(0, 0, 0, 0.5);
+          }
+    
+          ion-icon {
+            position: absolute;
+            top: -5px;
+            left: 0px;
+            font-size: 16px;
+          }
+     
+        }
+        // 添加媒体按钮 
+        .add-media {
+          div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 80px;
+            border: 1px solid #DDDDDD;
+            background: #ddd;
+    
+            img {
+              width: 50%;
+              height: 50%;
+              border: 0;
+            }
+          }
+        }
+      }
+  }
+
+
+// 遮罩
+.isMark {
+background: rgba(0, 0, 0, 0.5);
+}

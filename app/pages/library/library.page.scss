@@ -1,0 +1,33 @@
+ion-toolbar {
+    --border-color: transparent;
+}
+.file-item {
+    font-family: Source Han Sans CN;
+    .file-tit {
+        font-size: 14px; 
+        font-weight: 800;
+        color: #444;
+        line-height: 9px;
+    }
+    ion-row {
+        font-size: 13px;
+        line-height: 26px;
+        .name { 
+            color: #888;
+        }
+        .val {
+            color: #333;
+        }
+        &.time {
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            ion-img {
+                width: 12px;
+                height: 12px;
+                margin-right: 2px;
+            }
+        }
+    }
+    
+}

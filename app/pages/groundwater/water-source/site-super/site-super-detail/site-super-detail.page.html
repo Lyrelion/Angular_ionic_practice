@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>新增现场监察</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="full">
+      <ion-col size="5"><ion-label class="name">监督管理任务：</ion-label></ion-col> 
+      <ion-col size="7"><ion-label class="val">监督管理</ion-label></ion-col>      
+    </ion-item>
+    <ion-item lines="full">
+      <ion-col size="5">
+        <ion-label class="name">监督管理单位：</ion-label>
+      </ion-col>
+      <ion-col size="7">
+        <ion-label class="val">南昌市生态环境局</ion-label>
+      </ion-col>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-col size="5">
+        <ion-label class="name">监督管理时间：</ion-label>
+      </ion-col>
+      <ion-col size="7"> <ion-datetime displayFormat="YYYY-MM-DD" min="1989-06-04" max="2004-08-23" value="2020-12-12"></ion-datetime></ion-col>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-col size="5">
+        <ion-label class="name">现场监督意见：</ion-label>
+      </ion-col>
+      <ion-col size="7"><ion-input class="val" value="无保护区内违规开发"></ion-input></ion-col>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-col size="5">
+        <ion-label class="name">监督管理附件：</ion-label>
+      </ion-col>
+      <ion-col size="7">
+        <ion-img src="assets/img/top_icon_add.png" class="addfile-icon"></ion-img>
+        <ion-label>上传附件</ion-label>
+      </ion-col>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-col size="5">
+        <ion-label class="name">上报人：</ion-label>
+      </ion-col>
+      <ion-col size="7"><ion-input class="val"></ion-input></ion-col>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-col size="5">
+        <ion-label class="name">上报时间：</ion-label>
+      </ion-col>
+      <ion-col size="7"> <ion-datetime displayFormat="YYYY-MM-DD" min="1989-06-04" max="2004-08-23" value="2020-12-12"></ion-datetime></ion-col>
+    </ion-item>
+  </ion-list>
+</ion-content>

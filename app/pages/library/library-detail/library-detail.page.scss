@@ -1,0 +1,52 @@
+ion-toolbar {
+    --border-color: transparent;
+}
+
+.file-detail {
+    padding: 0 14px;
+    .title {
+        font-size: 21px;
+        line-height: 30px;
+    }
+    .split-line {
+        display: inline-block;
+        width: 1px;
+        height: 12px;
+        margin: 0 10px;
+        background-color: #eee;
+    }
+    ion-row {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        line-height: 24px;
+        color: #999;
+    }
+    .para {
+        color: #333;
+        font-size: 13px;
+        line-height: 25px;
+    }
+    .buttom-text {
+        display: flex;
+        flex-direction: column;
+        margin-top: 16px;
+       ion-label {
+        color: #999;
+        font-size: 14px;
+        text-align: right;
+        line-height: 24px;
+       }
+    }
+    .wj-icon {
+        display: flex;
+        align-items: center;
+        color: #333;
+        font-size: 14px;
+        ion-img {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+// 添加按钮样式
+ion-button {
+    height: 30px;
+    width: 30px;
+    --padding-start: 0;
+    --padding-end: 10px;
+}
+// 搜索框样式
+ion-searchbar {
+    --border-radius: 4px;
+    --background: #fff;
+    --cancel-button-color: #333333;
+    --clear-button-color: #333333;
+    background-color: #f5f5f5;
+}

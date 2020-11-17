@@ -1,0 +1,28 @@
+.title {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    span {
+        font-weight: 800;
+        font-size: 14px;
+    }
+    img {
+        margin-right: 10px;
+    }
+}
+.list-line {
+    display: block;
+    height: 8px;
+    width: 100%;
+    background-color: #F5F5F5;
+ }
+
+
+ .table {
+     ion-label {
+         text-align: center;
+     }
+     .thead {
+        font-size: 13px;
+     }
+ }

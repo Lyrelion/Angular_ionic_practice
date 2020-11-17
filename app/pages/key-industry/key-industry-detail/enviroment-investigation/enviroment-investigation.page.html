@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>环境监测和调查评估信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 土壤检测数据 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>土壤监测数据</span>
+  </div>
+  <app-base-info [keyList]="dataList" [contentInfo]="solidInfo" isLine="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 地下水监测数据 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>地下水监测数据</span>
+  </div>
+  <app-base-info [keyList]="dataList" [contentInfo]="waterInfo" isLine="true" isBottomLine="true"></app-base-info>
+</ion-content>

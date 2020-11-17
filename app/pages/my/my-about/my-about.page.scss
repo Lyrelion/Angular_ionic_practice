@@ -1,0 +1,34 @@
+ion-toolbar {
+    --border-color: transparent;
+}
+
+.title {
+    font-size: 15px;
+    color: #444;
+    font-weight: bold;
+    text-align: center;
+}
+
+ion-img {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    margin-top: 15px;
+}
+ion-item {
+    display: flex;
+    align-items: flex-start;
+    --border-style: dotted;
+    ion-label {
+        --color: #333;
+        font-size: 14px;
+        line-height: 26px;
+        text-overflow: inherit;
+        white-space: inherit;
+        overflow: inherit;
+    }
+}
+
+
+
+

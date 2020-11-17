@@ -1,0 +1,17 @@
+// 列表图标
+.list-icon {
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+}
+.list-line {
+   height: 8px;
+   width: 100%;
+   background-color: #F5F5F5;
+}
+// 下划线
+ion-item {
+    --border-color: #EEEEEE;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+}

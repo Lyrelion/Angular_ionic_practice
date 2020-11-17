@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>详情</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="file-detail">
+    <h2 class="title">{{ showInfo?.CLAUSENAME }}</h2>
+    <ion-row>
+      <ion-text class="com-name" color="primary">{{ showInfo?.CREATE_UNITNAME }}</ion-text>
+      <span class="split-line"></span>
+      <ion-text class="time">{{ showInfo?.PUBLISH_TIME }}</ion-text>
+    </ion-row>
+    <ion-row>
+      <ion-label>发布人：{{ showInfo?.CREATE_USERNAME }}</ion-label>
+      <ion-label>发文编号：{{ showInfo?.CLAUSENUMBER }}</ion-label>
+    </ion-row>
+    <p class="para">
+      　　{{ showInfo?.CONTENT }}
+    </p>
+    <span class="wj-icon" (click)="getFile()"><ion-img src="assets/img/wj-icon.png"></ion-img>附件：农办牧〔2020〕23号</span>
+    <div class="buttom-text">
+      <ion-label>农业农村部办公厅</ion-label>
+      <ion-label>生态环境部办公厅</ion-label>
+      <ion-label>2020年6月4日</ion-label>
+    </div>
+  </div>
+</ion-content>

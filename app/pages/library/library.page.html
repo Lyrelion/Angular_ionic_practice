@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>文件库</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- 下拉刷新 -->
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="下拉刷新页面"
+        refreshingSpinner="circles"
+        refreshingText="加载中...">
+      </ion-refresher-content>
+    </ion-refresher>
+
+    <!-- 类型 级别 -->
+    <app-drop-dwon-selection [selectionList]="selectionList" (eventOne)="ionChangeArea($event)"
+      (eventTwo)="confirmTime($event)" *ngIf="showContent === 'total'"></app-drop-dwon-selection>
+    
+    <!-- 文件库列表 -->
+    <ion-item class="file-item" *ngFor="let item of fileList" (click)="goDetailPage(item)">
+      <ion-grid>
+        <!-- 列表项title -->
+        <h4 class="file-tit">{{ item?.CLAUSENAME }}</h4>
+        <!-- 列表项content -->
+        <ion-row>
+          <ion-label class="name">发布单位：</ion-label>
+          <ion-label class="val">{{ item?.CREATE_UNITNAME }}</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label class="name">级别：</ion-label>
+          <ion-label class="val">{{ item?.LEVEL }}</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label class="name">类型：</ion-label>
+          <ion-label class="val">{{ item?.TYPE }}</ion-label>
+        </ion-row>
+        <!-- 列表项time -->
+        <ion-row class="time">
+          <ion-img src="assets/img/wjk-time.png" class="time-pic"></ion-img>{{ item.PUBLISH_TIME }}
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <!-- 上拉加载 -->
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载更多...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

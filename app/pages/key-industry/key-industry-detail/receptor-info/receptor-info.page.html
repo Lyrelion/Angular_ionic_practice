@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>敏感受体信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>基本信息</span>
+  </div>
+  <app-base-info  [keyList]="receptorList" [contentInfo]="receptorData" isLine="true" isBottomLine="true"></app-base-info>
+</ion-content>

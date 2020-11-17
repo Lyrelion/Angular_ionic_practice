@@ -1,0 +1,39 @@
+// 页面样式
+ion-content {
+    // 内边距
+    --padding-start: 13px;
+    --padding-top: 13px;
+    --padding-end: 13px;
+}
+// 地图切换按钮样式
+.map {
+    font-size: 14px;
+    font-weight: 800px;
+    img {
+        margin-right: 5px;
+    }
+}
+// 模块样式
+.page-main {
+    // 卡片样式
+    ion-card {
+        padding-top: 19px;
+        margin: 0;
+    }
+    // 栅格布局
+    ion-row {
+        text-align: center;
+        margin-bottom: 20px;
+    };
+    // 图片样式
+    img {
+        width: 50px;
+    };
+    // 文字样式
+    p {
+        font-size: 16px;
+        margin: 18px 0;
+        margin-top: 10px;
+        color: #333333;
+    }
+}

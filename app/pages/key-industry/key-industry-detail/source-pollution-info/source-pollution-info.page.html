@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>污染源信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 基本信息 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>基本信息</span>
+  </div>
+  <app-base-info  [keyList]="baseInfoList" [contentInfo]="baseInfoData" isLine="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 生产信息 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>生产信息</span>
+  </div>
+  <app-base-info  [keyList]="productionInfoList" [contentInfo]="baseInfoData" isLine="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 危险化学品 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>危险化学品</span>
+  </div>
+  <app-base-info  [tableList]="chemicalsList" [tableData]="chemicalsData" isLine="true" isTable="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 废气 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>废气</span>
+  </div>
+  <app-base-info  [keyList]="wastegasList" [contentInfo]="wastegasInfo" isLine="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 废气污染物 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>废气污染物</span>
+  </div>
+  <app-base-info  [tableList]="wastegasThingList" [tableData]="wastegasThing" isLine="true" isTable="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 废水 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>废水</span>
+  </div>
+  <app-base-info  [keyList]="wasteWaterList" [contentInfo]="wasteWaterInfo" isLine="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 废水污染物 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>废水污染物</span>
+  </div>
+  <app-base-info  [tableList]="wasteWaterThingList" [tableData]="wasteWaterThing" isLine="true" isTable="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 固体废物 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>固体废物</span>
+  </div>
+  <app-base-info  [keyList]="wasteSolidList" [contentInfo]="wasteSolidData" isLine="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 地块综合情况 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>地块综合情况</span>
+  </div>  
+  <app-base-info  [keyList]="allLandList" [contentInfo]="allLandData" isLine="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 特征污染物 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>特征污染物</span>
+  </div>
+  <app-base-info  [tableList]="pollutionList" [tableData]="pollutionData" isLine="true" isTable="true"></app-base-info>
+</ion-content>

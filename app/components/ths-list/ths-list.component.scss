@@ -1,0 +1,85 @@
+// 列表
+.list {
+    ion-item {
+        --padding-end: 0;
+        --padding-start: 0;
+        --padding-bottom: 0;
+        --inner-padding-start: 20px;
+        --inner-padding-end:20px;
+        --min-height: 20px;
+        --border-color: #EEEEEE;
+    }
+}
+div {
+    display: flex;
+}
+// 题目
+.title {
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    img {
+        height: 16px;
+    }
+    span {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: Source Han Sans CN;
+        color: #444444;
+        line-height: 28px;
+        img {
+            margin-right: 10px;
+        }
+    }
+}
+// 地址
+.address {
+    font-size: 13px;
+    color: #333333;
+    align-items: center;
+    img {
+        width: 1px;
+        height: 13px;
+        margin: 0 10px;
+    }
+    span {
+        line-height: 30px;
+    }
+}
+// 其他信息
+.info {
+    flex-direction: column;
+    div {
+        display: flex;
+        width: 100%;
+        justify-content: left;
+    }
+    .info-title {
+        color: #888888;
+        font-size: 13px;
+        line-height: 28px;
+    }
+    .info-content {
+        color: #333333;
+        font-size: 13px;
+        line-height: 28px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+   
+}
+// 导航
+.dh {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    z-index: 10;
+    img {
+        margin-right: 5px;
+    }
+}

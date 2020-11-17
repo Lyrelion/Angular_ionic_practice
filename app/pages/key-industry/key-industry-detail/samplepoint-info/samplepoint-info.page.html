@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>布点信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 疑似污染区域 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>疑似污染区域</span>
+  </div>
+  <app-base-info  [keyList]="pollutionList" [contentInfo]="pollutionData" isLine="false"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 采样点位 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>采样点位</span>
+  </div>
+  <app-base-info  [keyList]="pointList" [contentInfo]="pointData" isLine="true"></app-base-info>
+  <div class="list-line">
+  </div>
+  <!-- 审核详情 -->
+  <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>审核详情</span>
+  </div>
+  <app-base-info  [keyList]="detailList" [contentInfo]="pointData" isLine="true" isBottomLine="true" ></app-base-info>
+</ion-content>

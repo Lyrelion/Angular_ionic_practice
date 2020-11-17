@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>农村环境</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-ths-list-details
+  [listInfo]="listInfo"
+  (itemClick)="itemClick($event)"
+  ></app-ths-list-details>
+</ion-content>

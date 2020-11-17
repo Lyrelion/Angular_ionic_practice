@@ -1,0 +1,39 @@
+ion-toolbar {
+    --border-color: transparent;
+}
+.tab-switch {
+    --ion-grid-padding: 0;
+    border-bottom: 1px solid #eee;
+    ion-col {
+        text-align: center;
+        font-size: 14px;
+    }
+    ion-row {
+        height: 100%;
+        line-height: 45px;
+    }
+}
+.active {
+    background-color: #1a94f3;
+    position: absolute;
+    bottom: 0;
+    width: 52px;
+    left: 50%;
+    height: 2px;
+    transform: translateX(-50%);
+    background: #1a94f3;
+}
+.active-word {
+    color: #1a94f3;
+}
+// 搜索框样式
+ion-searchbar {
+    --border-radius: 4px;
+    --background: #fff;
+    --cancel-button-color: #333333;
+    --clear-button-color: #333333;
+    background-color: #f5f5f5;
+}
+.elemnt-none {
+    display: none;
+}

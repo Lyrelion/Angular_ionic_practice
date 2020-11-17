@@ -1,0 +1,22 @@
+<div class="close-imgs" (click)="close()">
+  <ion-icon name="close"></ion-icon>
+</div>
+
+<ion-slides pager="true" [options]="slideOpts">
+  <!-- <ion-slide *ngFor="let item of pictures">
+    <div class="img-title">{{item.name}}</div>
+    <div class="img-box" [ngStyle]="{'max-height': maxHeight}">
+      <img [src]="item.imgUrl">
+     
+    </div>
+    <p class="img-note">{{item.note}}</p>
+  </ion-slide> -->
+  <ion-slide *ngFor="let item of pictures">
+    <div class="img-title">图片查看</div>
+    <div class="img-box" [ngStyle]="{'max-height': maxHeight}">
+      <img [src]="item"  (click)="close()">
+     
+    </div>
+    <p class="img-note">{{item.name}}</p>
+  </ion-slide>
+</ion-slides>

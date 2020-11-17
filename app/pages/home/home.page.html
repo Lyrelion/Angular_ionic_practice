@@ -1,0 +1,74 @@
+<ion-header >
+  <ion-toolbar color="line">
+    <ion-title>土壤环境现场监察</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  color="primary" class="map" (click)="toModule('map')">
+        <img src="../assets/img/map.png" width="16px">
+        地图
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed class="page-main">
+    <!-- 模块划分 -->
+    <ion-row>
+      <ion-col size="6" (click)="toModule('survey')">
+        <ion-card>
+          <img src="../assets/img/survey.png">
+          <p>概况</p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" (click)="toModule('keyIndustry')">
+        <ion-card>
+          <img src="../assets/img/key-industry.png">
+          <p>重点行业企业</p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" (click)="toModule('constructionLand')">
+        <ion-card>
+          <img src="../assets/img/construction-land.png">
+          <p>建设用地</p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" (click)="toModule('agriculturalLand')">
+        <ion-card>
+          <img src="../assets/img/agricultural-land.png">
+          <p>农用地</p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" (click)="toModule('ruralEnvironment')">
+        <ion-card>
+          <img src="../assets/img/rural-environment.png">
+          <p>农村环境</p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" (click)="toModule('groundwater')">
+        <ion-card>
+          <img src="../assets/img/groundwater.png">
+          <p>地下水</p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" (click)="toModule('library')">
+        <ion-card>
+          <img src="../assets/img/library.png">
+          <p>文件库</p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" (click)="toModule('my')">
+        <ion-card>
+          <img src="../assets/img/my.png">
+          <p>我的</p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

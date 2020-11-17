@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>风险筛查分数</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!-- 一级指标得分和风险关注度划分 -->
+<div class="title">
+  <img src="assets/img/xq-title.png" width="3px">
+   <span>一级指标得分和风险关注度划分</span>
+</div>
+<app-base-info  [keyList]="firstList" [contentInfo]="firstData" isLine="true"></app-base-info>
+<div class="list-line">
+</div>
+<!-- 土壤二级、三级指标得分 -->
+<div class="title">
+  <img src="assets/img/xq-title.png" width="3px">
+   <span>土壤二级、三级指标得分</span>
+</div>
+<app-base-info  [keyList]="soliList" [contentInfo]="soliData" isLine="true"></app-base-info>
+<div class="list-line">
+</div>
+<!-- 地下水二级、三级指标得分 -->
+<div class="title">
+  <img src="assets/img/xq-title.png" width="3px">
+   <span>地下水二级、三级指标得分</span>
+</div>
+<app-base-info  [keyList]="waterList" [contentInfo]="waterData" isLine="true" isBottomLine = "true"></app-base-info>
+</ion-content>

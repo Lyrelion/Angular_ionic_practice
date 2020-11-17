@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>莲场水厂(西总干渠)水源地 历史现场监察</ion-title>
+    <ion-img src="assets/img/top_icon_add.png" slot="end" class="add-icon" (click)="goAddTask()"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 搜索框 -->
+  <ion-searchbar 
+      placeholder="请输入监察管理任务名称" 
+      inputmode="decimal" 
+      type="decimal" 
+      [debounce]="250" 
+      showCancelButton="always"
+      cancelButtonText="取消"
+      (ionCancel)="searchCancel()"
+      [(ngModel)]="keywords"
+      (ionChange)="search()"
+      mode="ios"
+    ></ion-searchbar>
+  <!-- 全部内容 -->
+  <app-ths-list 
+    [pageInfo]="page.listInfo" 
+    [listCode]="page.listInfoCode"
+    (getCollect)="getCollect($event)"
+    (getNavigation)="getNavigation($event)"
+    (getItemClick)="getItemClick($event)"
+  ></app-ths-list>
+</ion-content>

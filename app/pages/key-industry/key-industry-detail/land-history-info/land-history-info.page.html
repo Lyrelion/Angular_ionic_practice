@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>地块利用历史</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 地块利用历史 -->
+  <!-- <div class="title">
+    <img src="assets/img/xq-title.png" width="3px">
+     <span>地块利用历史</span>
+  </div> -->
+  <!-- 有多个模块，利用数组循环获取 -->
+  <div class="list" *ngFor="let item of pageData">
+    <app-base-info  [keyList]="landUserList" [contentInfo]="item"></app-base-info>
+    <div class="list-line">
+    </div>
+  </div>
+  <!-- <app-base-info [keyList]="landUserList" [contentInfo]="pageData"></app-base-info> -->
+</ion-content>

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{page.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-ths-list-details
+  [topInfo]="topInfo"
+  [listInfo]="listInfo"
+  (itemClick)="itemClick($event)"
+  ></app-ths-list-details>
+</ion-content>

@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>地下水</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  color="primary" class="map" (click)="toModule('map')">
+        <img src="../assets/img/map.png" width="16px">
+        地图
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <!-- tab切换 -->
+  <ion-grid class="tab-switch">
+    <ion-row>
+      <ion-col *ngFor="let item of titleArr;let i=index" (click)="changeTitle(item.code, i)">
+        <span [ngClass]="{'active-word': titleChecked === item.code}">{{item.name}}</span>
+        <div [ngClass]="{'active': titleChecked === item.code}"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- 搜索框 -->
+  <ion-searchbar 
+      *ngIf="showContent === 'total'"
+      placeholder="查找" 
+      inputmode="decimal" 
+      type="decimal" 
+      [debounce]="250" 
+      showCancelButton="always"
+      cancelButtonText="取消"
+      (ionCancel)="searchCancel()"
+      [(ngModel)]="keywords"
+      (ionChange)="search()"
+      mode="ios"
+    ></ion-searchbar>
+  <!-- 下拉选择框 -->
+  <app-drop-dwon-selection [selectionList]="selectionList" (eventOne)="ionChangeArea($event)"
+      (eventTwo)="confirmTime($event)" *ngIf="showContent === 'total'"></app-drop-dwon-selection>
+</ion-header>
+
+<ion-content>
+  <!-- 下拉刷新 -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="下拉刷新页面"
+      refreshingSpinner="circles"
+      refreshingText="加载中...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- 全部内容 -->
+  <app-ths-list 
+    [pageInfo]="page.listInfo" 
+    [listCode]="page.listInfoCode"
+    (getCollect)="getCollect($event)"
+    (getNavigation)="getNavigation($event)"
+    (getItemClick)="getItemClick($event)"
+    *ngIf="showContent === 'total'"
+  ></app-ths-list>
+  <!-- 收藏内容 -->
+  <app-ths-list 
+    [pageInfo]="page.listInfo" 
+    [listCode]="page.listInfoCode"
+    (getCollect)="getCollect($event)"
+    (getNavigation)="getNavigation($event)"
+    (getItemClick)="getItemClick($event)"
+    *ngIf="showContent === 'collect'"
+  ></app-ths-list>
+
+  <!-- 上拉加载 -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载更多...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+    
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header color="line">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>重点行业企业</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  color="primary" class="map" (click)="toModule('map')">
+        <img src="../assets/img/map.png" width="16px">
+        地图
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+    <!-- tab切换 -->
+    <ion-grid class="tab-switch">
+      <ion-row>
+        <ion-col *ngFor="let item of titleArr;let i=index" (click)="changeTitle(item.code, i)">
+          <span [ngClass]="{'active-word': titleChecked === item.code}">{{item.name}}</span>
+          <div [ngClass]="{'active': titleChecked === item.code}"></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- 搜索框 -->
+    <ion-searchbar 
+        [ngClass]="{'elemnt-none': showContent === 'total'? false: true}"
+        placeholder="请输入企业名称进行搜索" 
+        inputmode="decimal" 
+        type="decimal" 
+        [debounce]="250" 
+        showCancelButton="always"
+        cancelButtonText="取消"
+        (ionCancel)="searchCancel()"
+        [(ngModel)]="keywords"
+        (ionChange)="search()"
+        mode="ios"
+      ></ion-searchbar>
+  <div>
+    <app-drop-dwon-selection 
+      [ngClass]="{'elemnt-none': showContent === 'total'? false: true}"
+      [selectionList]="selectionList" 
+      (eventOne)="ionChangeArea($event)"
+      ></app-drop-dwon-selection>
+  </div>
+</ion-header>
+
+<ion-content>
+  <app-key-industry-component [params] = "params"></app-key-industry-component>
+</ion-content>

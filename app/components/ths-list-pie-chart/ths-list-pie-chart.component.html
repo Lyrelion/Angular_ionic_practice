@@ -1,0 +1,16 @@
+<div class="container">
+  <!-- 图 -->
+  <div [id]="chartId" class="chart"></div>
+  <!-- 列表 -->
+  <div class="list" *ngIf="pieData">
+    <div class="item" *ngFor="let item of pieData.data; index as i">
+      <!-- <div><i [ngStyle]="{'backgroundColor': pieData.colorList[i]}"></i><span>{{item.name}}</span></div>
+      <div [ngStyle]="{'color': pieData.colorList[i]}">{{item.label}}<span *ngIf="pieData.unit !== '%'">{{pieData.unit}}</span></div> -->
+      <div class="percent"><span [ngStyle]="{'color': pieData.colorList[i]}">10%</span></div>
+      <div class="name">{{item.name}}：</div>
+      <div class="val">{{item.label}}<span *ngIf="pieData.unit !== '%'">{{pieData.unit}}</span></div>
+    </div>
+  </div>
+  <!-- 图上的标题 -->
+  <div class="title" [innerHTML]="pieData.title"></div>
+</div>

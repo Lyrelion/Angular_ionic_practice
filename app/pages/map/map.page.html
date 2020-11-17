@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title (click)="openPicker()">
+      {{pages.title}}
+      <img src="../assets/img/select.png" width="8px">
+    </ion-title>
+    <ion-button slot="end" fill="clear" class="search" (click)="toSearch()">
+      <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 地图 -->
+  <ths-map (onMapLoaded)="onMapLoaded($event)" (mapInit)="toUserLocation()"></ths-map>
+  <!-- 我的周边 -->
+  <div  class="zb" (click)="toAround()">
+    <img src="assets/img/map-zb.png">
+  </div>
+  <!-- 地图初始化按钮 -->
+  <div  class="csh" (click)="init()">
+    <img src="assets/img/map-csh.png">
+  </div>
+  <!-- 筛选 -->
+  <ion-list class="selected">
+    <ion-item (click)="toggleSelect()" [lines]="pages.isSelect? 'full': 'none'">
+      <ion-label class="select-font select-title">筛选</ion-label>
+      <!-- 展开图标 -->
+      <img slot="end" src="assets/img/map-zk.png" width="13px" *ngIf="pages.isSelect">
+      <!-- 关闭图标 -->
+      <img slot="end" src="assets/img/map-sq.png" width="13px" *ngIf="!pages.isSelect">
+    </ion-item>
+    <!-- 筛选内容 -->
+    <div *ngIf="pages.isSelect">
+      <ion-item *ngFor="let item of pages.selectType, let i = index" lines="none" (click)="selectClick(i)" >
+        <ion-label [ngClass]="{'select-font': item.isSelected}">{{item.name}}</ion-label>
+        <!-- 选中图标 -->
+        <img  slot="end" src="../assets/img/selected.png" width="13px" *ngIf="item.isSelected">
+        <!-- 不选中图标 -->
+        <img  slot="end" src="../assets/img/selectNo.png" width="13px" *ngIf="!item.isSelected">
+      </ion-item>
+    </div>
+  </ion-list>
+  <!-- 图例 -->
+  <ion-list class="legend">
+    <!-- 图例收起的时候，使用legend-off样式 -->
+    <ion-item (click)="toggleLegend()" [ngClass]="{'legend-off': !pages.isLegend || pages.showLegend.length === 0}">
+      <ion-label><img src="assets/img/map-legend-down.png" width="12px" *ngIf="!pages.isLegend || pages.showLegend.length === 0"><div>图例</div></ion-label>
+      <div class="close-legend"><img slot="end" src="assets/img/map-tl.png" *ngIf="pages.isLegend && pages.showLegend.length !== 0" width="13px"></div>
+    </ion-item>
+    <div *ngIf="pages.isLegend">
+      <ion-item lines="none" *ngFor="let item of pages.showLegend">
+        <ion-label class="legend-text">
+           <img  slot="start" [src]="item.icon" width="22px">
+            <span>{{item.name}}</span> 
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+<!-- 弹框信息 -->
+<ion-card class="list-card" *ngIf="isShowDetail">
+  <div class="title">
+    <p class="text">{{pages.popUpInfo.name}}</p>
+  </div>
+  <div class="main-info">
+    <p>距你{{pages.popUpInfo.distance}}</p>
+    <p>东经 {{pages.popUpInfo.lon}} 北纬 {{pages.popUpInfo.lat}}</p>
+    <p><img src="assets/img/map-popup.png" width="12px">{{pages.popUpInfo.address}}</p>
+  </div>
+  <div class="btn">
+    <ion-button expand="block" fill="clear" shape="round" (click)="toAroundInfo(pages.popUpInfo)">
+      周边信息
+    </ion-button>
+    <ion-button expand="block" fill="clear" shape="round" class="btn-right" (click)="toDetailsInfo(pages.popUpInfo)">
+      详细信息
+    </ion-button>
+  </div>
+  <ion-button shape="round" class="dh" (click)="toNavigation()">
+    <img src="assets/img/dh.png" width="12px">
+    导航
+  </ion-button>
+</ion-card>
+  
+</ion-content>
+<div class="wrap" *ngIf="provietSelect">
+  <!-- 区域多级联动 -->
+  <div class="tab3">
+    <div class="region-content">
+     
+      <div class="selected-region-title">
+        <span [ngClass]="{'bottom-border': currentIndex === 1}"
+          (click)="clickProvince()">{{currentProvince.text === '' ? '请选择' : currentProvince.text}}</span>
+        <span *ngIf="currentIndex > 1" [ngClass]="{'bottom-border': currentIndex === 2}"
+          (click)="clickCity()">{{currentCity.text === '' ? '请选择' : currentCity.text}}</span>
+        <span *ngIf="currentIndex > 2" [ngClass]="{'bottom-border': currentIndex === 3}"
+          (click)="clickCountry()">{{currentCountry.text === '' ? '请选择' : currentCountry.text}}</span>
+      </div>
+      <ion-list style="height: calc(100% - 200px);">
+        <ion-radio-group *ngIf="currentIndex === 1" [value] = "currentProvince.value">
+          <ion-item *ngFor="let item of pages.dropDownContentList" (click)="selectProvince(item)">
+            <ion-label style="color: #333;">{{item.text}}</ion-label>
+            <ion-radio slot="end" mode="ios" [value]="item.value"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <ion-radio-group *ngIf="currentIndex === 2" [value] = "currentCity.value">
+          <ion-item *ngFor="let item of cityArr" (click)="selectCity(item)">
+            <ion-label style="color: #333;">{{item.text}}</ion-label>
+            <ion-radio slot="end" mode="ios" [value]="item.value"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <ion-radio-group *ngIf="currentIndex === 3" [value] = "currentCountry.value">
+          <ion-item *ngFor="let item of countryArr" (click)="selectCountry(item)">
+            <ion-label style="color: #333;">{{item.text}}</ion-label>
+            <ion-radio slot="end" mode="ios" [value]="item.value"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-grid class="title">
+        <ion-row>
+          <ion-col size='6' class="text-left" (click)="closeComponent()">
+            取消
+          </ion-col>
+          <ion-col class="text-right" size='6' (click)="selectRegionOk()">
+            确定
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</div>

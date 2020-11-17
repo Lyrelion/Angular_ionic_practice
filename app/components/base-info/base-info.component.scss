@@ -1,0 +1,91 @@
+
+.base-info ion-item {
+    --border-color: #d9d9d9;
+    display: flex;
+    justify-content: space-between;
+    --inner-padding-bottom: 5px;
+    --inner-padding-top: 5px;
+    --padding-start: 10px;
+}
+.base-info ion-item ion-label{
+    font-size: 13px;
+    margin: 0;
+}
+.base-info ion-item .key {
+    color: #888888;
+    width: 140px;
+    min-width: 140px;
+    max-width: 200px;
+}
+.base-line-info ion-item {
+    --inner-padding-bottom: 0;
+    --inner-padding-top: 0;
+}
+.base-line-info ion-item .key  {
+    height: 100%;
+    align-items: center;
+    display: flex;
+    border-right: 1px solid #d9d9d9;
+    padding-right: 5px;
+}
+.div-line {
+    border-top: 1px solid #d9d9d9;
+}
+.div-bottom-line {
+    border-bottom: 1px solid #d9d9d9;
+}
+.base-info ion-item .content {
+    color: #333333;
+    text-align: left;
+    line-height: 1.8;
+    margin-left: 10px;
+}
+.base-info .uoDown {
+    margin-right: 40px;
+}
+.base-info .uoDown>p{
+    margin: 0;
+    line-height: 25px;
+}
+.base-info .uoDown .title {
+    color: #727D8C;
+}
+.base-info .uoDown .des {
+    color: #333333;
+}
+
+// 图标
+.base-info .end img{
+    width: 25px;
+    height: 25px;
+}
+a{
+    font-size: 13px;
+}
+.imgStylr {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    div {
+        width: 80px;
+        margin-right: 10px;
+    }
+}
+
+// 表格
+
+.table {
+    ion-label {
+        text-align: center;
+    }
+    .thead {
+       font-size: 13px;
+    }
+    ion-item .key {
+        color: #333333;
+        justify-content: center;
+    }
+}
+.img-info {
+    max-height: 130px;
+}

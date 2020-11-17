@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{page.title}}</ion-title>
+  </ion-toolbar>
+  <div>
+    <app-drop-dwon-selection [selectionList]="selectionList" (eventOne)="ionChangeArea($event)"></app-drop-dwon-selection>
+  </div>
+</ion-header>
+
+<ion-content>
+  <!-- 下拉刷新 -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="下拉刷新页面"
+      refreshingSpinner="circles"
+      refreshingText="加载中...">
+    </ion-refresher-content>
+  </ion-refresher>
+<ion-list>
+  <ion-item 
+    *ngFor="let item of page.listInfo, let i = index" 
+    [lines] = "i === page.listInfo.length-1? 'none': 'full'"
+    (click)="toDetails(item)"
+    >
+    <ion-thumbnail>
+      <img src="assets/img/myaround.png" />
+    </ion-thumbnail>
+    <ion-label>
+      {{item.NAME}}
+      <p>
+        {{item.REGION_NAME}}
+        <img src="assets/img/map-line.png" width="2px">
+        {{item.TYPE}}
+      </p>
+    </ion-label>
+    <ion-label position="fixed">
+      <img src="assets/img/map-distance.png" width="11px"> 
+      <p>{{item.DISTANCE}}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+ <!-- 上拉加载 -->
+ <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="加载更多...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

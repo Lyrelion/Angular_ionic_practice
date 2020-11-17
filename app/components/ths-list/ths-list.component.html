@@ -1,0 +1,39 @@
+<ion-list class="list" *ngIf="pageInfo">
+  <ion-item 
+    *ngFor="let item of pageInfo, let i = index" 
+    [lines]="i === pageInfo.length-1? 'none': 'full'"
+    (click)="clickItem(item, $event)"
+    >
+    <ion-label>
+      <!-- 标题 -->
+      <div class="title">
+        <span>
+          <img [src]="item.titleIcon" *ngIf="item.titleIcon">
+          {{item[listCode.title]}}
+        </span>
+        <!-- 收藏 -->
+        <img src="assets/img/sc.png" *ngIf="item[listCode.isCollect] && item.isShowCollect" (click)="toggleCollect(i, $event, i)">
+        <img src="assets/img/sc-no.png" *ngIf="!item[listCode.isCollect] && item.isShowCollect" (click)="toggleCollect(i, $event, i)">
+      </div>
+      <!-- 位置信息 -->
+      <div class="address" *ngIf="item[listCode.addressInfo]">
+        <span>
+          距离{{item[listCode.addressInfo][listCode.range]}}m
+        </span>
+        <img src="assets/img/list-line.png">
+        <span>{{item[listCode.addressInfo][listCode.location]}}</span>
+      </div>
+      <!-- 其他信息 -->
+      <div class="info" *ngIf="item[listCode.otherInfo]">
+        <div *ngFor="let other of item[listCode.otherInfo]">
+          <p class="info-title">{{other[listCode.name]}}：</p>
+          <p class="info-content">{{other[listCode.value]}}</p>
+        </div>
+      </div>
+      <ion-button shape="round" class="dh" (click)="clickNavigation(i, $event)" *ngIf="item.isNavigation">
+        <img src="assets/img/dh.png" width="12px">
+        导航
+      </ion-button>
+    </ion-label>
+  </ion-item>
+</ion-list>

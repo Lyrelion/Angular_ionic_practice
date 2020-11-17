@@ -1,0 +1,25 @@
+<ion-list>
+  <ion-item 
+    lines="none" 
+    detail="true" 
+    (click)="listClick(topInfo)"
+    *ngIf="topInfo">
+    <ion-avatar slot="start" class="list-icon">
+      <img [src]="topInfo.iconUrl">
+    </ion-avatar>
+    <ion-label>{{topInfo.name}}</ion-label>
+  </ion-item>
+  <div class="list-line">
+  </div>
+  <ion-item 
+    *ngFor="let item of listInfo, let i = index" 
+    [lines]="i === listInfo.length-1?'none': 'full'"
+    detail="true"
+    (click)="listClick(item)"
+    >
+    <ion-avatar slot="start"  class="list-icon">
+      <img [src]="item.iconUrl" />
+    </ion-avatar>
+    <ion-label>{{item.name}}</ion-label>
+  </ion-item>
+</ion-list>

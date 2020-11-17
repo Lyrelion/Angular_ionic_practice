@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>监督管理</ion-title>
+    <ion-button slot="end" fill="clear" (click)="add()">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+    <!-- 搜索框 -->
+    <ion-searchbar 
+        placeholder="请输入企业名称进行搜索" 
+        inputmode="decimal" 
+        type="decimal" 
+        [debounce]="250" 
+        showCancelButton="always"
+        cancelButtonText="取消"
+        (ionCancel)="searchCancel()"
+        [(ngModel)]="page.keywords"
+        (ionChange)="search()"
+        mode="ios"
+      ></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <!-- 下拉刷新 -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="下拉刷新页面"
+      refreshingSpinner="circles"
+      refreshingText="加载中...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <app-ths-list 
+    [pageInfo]="page.listInfo" 
+    [listCode]="page.listInfoCode"
+    (getItemClick)="getItemClick($event)"
+    ></app-ths-list>
+    <!-- 上拉加载 -->
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载更多...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

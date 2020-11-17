@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{pages.title}}</ion-title>
+  </ion-toolbar>
+  <div class="list-line">
+  </div>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item lines="full" *ngIf="reportParams">
+    <ion-label class="key">
+      <p>监督管理任务名称</p>
+    </ion-label>
+    <ion-input 
+      class="value" 
+      type="tel"
+      placeholder="请输入监督管理任务名称"
+      [readonly]="pages.isSubmit"
+      [(ngModel)]="reportParams.SUPERVISIONTITLE"
+      ></ion-input>
+  </ion-item>
+  <ion-item lines="full"  *ngIf="reportParams">
+    <ion-label class="key">
+      <p>监督管理单位</p>
+    </ion-label>
+    <ion-input 
+      class="value" 
+      placeholder="请输入监督管理单位名称"
+      [readonly]="pages.isSubmit"
+      [(ngModel)]="reportParams.SUPERVISIONUNIT"
+      ></ion-input>
+  </ion-item>
+  <ion-item lines="full" [detail]="!pages.isSubmit"  *ngIf="reportParams">
+    <ion-label class="key">
+      <p>监督管理时间</p>
+    </ion-label>
+    <ion-label 
+      class="value time"
+      >
+      <ion-datetime 
+        displayFormat="YYYY-MM-DD" 
+        max="2099-12-31"
+        [value]="reportParams.SUPERVISIONTIME"
+        [readonly]="pages.isSubmit"
+        placeholder="请选择监督管理的时间"
+        cancelText="取消"
+        doneText="确定"
+        (ionChange)="selectDate($event)"
+      ></ion-datetime>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="full"  *ngIf="reportParams">
+    <ion-label class="key">
+      <p>监督管理意见</p>
+    </ion-label>
+      <ion-textarea 
+        class="value"
+        placeholder="请输入监督管理意见"
+        [readonly]="pages.isSubmit"
+        [(ngModel)]="reportParams.SUPERVISIONREMARK"
+        ></ion-textarea>
+  </ion-item>
+  <ion-item lines="full" [detail]="!pages.isSubmit"  *ngIf="reportParams">
+    <ion-label class="key">
+      <p>监督管理附件</p>
+    </ion-label>
+    <ion-label class="value" *ngIf="!pages.isSubmit || ( photoShowList.length === 0 && videoShowList.length === 0 )" (click)="reportImg()">
+      <p>请选择图片或视频</p>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="full" *ngIf="photoShowList.length !== 0 || videoShowList.length !== 0" class="img-show">
+    <ion-row>
+      <ion-col size='3' *ngFor="let item of photoShowList">
+        <img [src]="item.displayUrl" />
+        <div *ngIf="item.isSpeed" class="percentage">{{item.processNum}}</div>
+        <!-- 删除按钮 -->
+        <!-- <ion-icon *ngIf="!item.isSpeed || item.processNum === uploadFailed" name="close-circle"
+          (click)="deleteFile(item, 'Img')">
+        </ion-icon> -->
+        <!-- <ion-icon *ngIf="!item.isSpeed || item.processNum === uploadFailed" src="assets/img/close.svg"
+          (click)="deleteFile(item, 'Img')">
+        </ion-icon> -->
+        <!-- close.svg -->
+      </ion-col>
+      <!-- 图片展示部分 -->
+      <ion-col size='3' *ngFor="let item of videoShowList" >
+        <img src='assets/img/spmr.png' (click)="playVideo(item.displayUrl)">
+        <div *ngIf="item.isSpeed" class="percentage">{{item.processNum}}</div>
+        <!-- 删除视频 -->
+        <!-- <ion-icon *ngIf="!item.isSpeed || item.processNum === uploadFailed" name="close-circle"
+          (click)="deleteFile(item,'Video')">
+        </ion-icon> -->
+      </ion-col>
+      <ion-col size="3">
+        <img src="assets/img/report-add.png" (click)="reportImg()">
+      </ion-col>
+    </ion-row>
+  </ion-item>
+  <ion-item lines="full"  *ngIf="reportParams">
+    <ion-label class="key">
+      <p>上报人</p>
+    </ion-label>
+    <ion-label class="value">
+            {{reportParams.CREATE_USER}}
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none"  *ngIf="reportParams">
+    <ion-label class="key">
+      <p>上报时间</p>
+    </ion-label>
+    <ion-label class="value">
+      {{reportParams.CREATE_DATE}}
+    </ion-label>
+  </ion-item>
+  <div class="list-line" *ngIf="!pages.isSubmit">
+  </div>
+  <ion-item lines="none" *ngIf="!pages.isSubmit">
+    <ion-label class="key">
+      <p>位置信息</p>
+    </ion-label>
+    <ion-label class="value">
+      <ion-toggle 
+       color="primary"
+       [(ngModel)]="pages.isLocation"
+       mode="ios"
+      ></ion-toggle>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+</ion-content>
+<ion-footer *ngIf="!pages.isSubmit">
+  <div class="event">
+    <ion-button color="primary" (click)="report(2)">提交</ion-button>
+    <ion-button color="light" (click)="report(1)">暂存</ion-button>
+  </div>
+</ion-footer>

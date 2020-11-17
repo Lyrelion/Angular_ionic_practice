@@ -1,0 +1,66 @@
+<ion-list class="base-info" [ngClass]="{'base-line-info': isLine}" *ngIf="!isTable">
+  <div *ngFor="let item of keyList; let i = index" [ngClass]="{'div-line': isLine && i === 0, 'div-bottom-line': isBottomLine && i === keyList.length-1}">
+
+    <ion-item [lines]="keyList?.length === i+1?'none':'full'" *ngIf="item.type !== 'webORreport' && item.type !== 'webOText' && item.type !== 'textAndIsshow' && item.type !== 'img'">
+      <ion-label text-wrap class="key" position="fixed" *ngIf="item.type !== 'upDown'">{{item.label}}</ion-label>
+
+      <a color="light" [href]="contentInfo[item.code]" target="_blank" *ngIf="item.type === 'web'">{{contentInfo[item.code]}}</a>
+      <ion-label text-wrap class="content" *ngIf="item.type === 'text'">{{contentInfo[item.code] || '--'}}</ion-label>
+      <ion-label text-wrap class="content" *ngIf="item.type === 'btn'" (click)="clickBtn(contentInfo[item.code])">
+        <ion-button shape="round" size="small" *ngIf="contentInfo[item.code]">下载</ion-button>
+        <ion-button shape="round" size="small" disabled=true *ngIf="!contentInfo[item.code]">无数据</ion-button>
+      </ion-label>
+
+      <ion-label text-wrap class="uoDown"  *ngIf="item.type === 'upDown'">
+        <p class="title">{{item.label}}</p>
+        <p class="des" *ngIf="contentInfo[item.code]">{{contentInfo[item.code]}}</p>
+      </ion-label>
+      <ion-avatar class="end" slot="end" *ngIf="item.type === 'upDown'" (click)="location()">
+        <img [src]=item.imgUrl>
+      </ion-avatar>
+    </ion-item>
+
+    <ion-item *ngIf="item.type === 'webORreport'">
+      <ion-label text-wrap class="key" position="fixed">{{item.label}}</ion-label>
+      <ion-label text-wrap class="content">{{contentInfo[item.code] === '1' ? '网址' : '其他'}}</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="item.type === 'webOText'">
+      <ion-label text-wrap class="key" position="fixed">{{contentInfo.CENSUS_PUBLIC_TYPE === '1' ? '公示网址': '报刊名称及刊号'}}</ion-label>
+      <a color="light" [href]="contentInfo[item.code]" target="_blank" *ngIf="contentInfo.CENSUS_PUBLIC_TYPE === '1'">{{contentInfo[item.code]}}</a>
+      <ion-label text-wrap class="content" *ngIf="contentInfo.CENSUS_PUBLIC_TYPE === '3'">{{contentInfo[item.code] || '--'}}</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="item.type === 'textAndIsshow' && contentInfo[item.code]">
+      <ion-label text-wrap class="key" position="fixed">{{item.label}}</ion-label>
+      <ion-label text-wrap class="content">{{contentInfo[item.code]}}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="item.type === 'img' && contentInfo[item.code]">
+      <ion-label text-wrap class="key" position="fixed">
+        {{item.label}}
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="item.type === 'img' && contentInfo[item.code]" lines="none">
+      <ion-label text-wrap class="content imgStylr">
+        <ion-col *ngFor="let iconUrl of contentInfo[item.code], let i = index" (click)="enlargeImage(i, contentInfo[item.code])" size="4">
+          <img [src] = "iconUrl" class="img-info">
+        </ion-col>
+      </ion-label>
+    </ion-item>
+  </div>
+</ion-list>
+<ion-list class="base-info table" [ngClass]="{'base-line-info': isLine}" *ngIf="isTable || tableData">
+  <ion-item class="thead" color="medium" lines="none">
+    <ion-label class="key">{{tableList.title[0]}}</ion-label>
+    <ion-label>{{tableList.title[1]}}</ion-label>
+  </ion-item>
+  <ion-item 
+    class="thead"
+    *ngFor="let item of tableData, let i = index" 
+    [lines]="i === tableData.length-1?'none':'full'"
+    >
+    <ion-label class="key">{{item[tableList.name]}}</ion-label>
+    <ion-label>{{item[tableList.num]}}</ion-label>
+  </ion-item>
+  
+</ion-list>
